@@ -1,9 +1,11 @@
 pipeline {
-  agent { docker { image 'python:3.7.6' } }
+  agent { docker { image 'python:3.7.6' } dockerfile true }
   stages {
-    agent('Docker Label') {
-      docker {
+    stage('Docker test') {
+      agent {
+        docker {
           label 'docker'
+        }
       }
     }
     stage('build') {
